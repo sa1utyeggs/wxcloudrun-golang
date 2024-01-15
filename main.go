@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"wxcloudrun-golang/services"
@@ -37,6 +38,7 @@ func main() {
 			request := services.EventRequest{}
 			err := c.ShouldBindJSON(&request)
 			if err != nil {
+				fmt.Println(err)
 				c.String(http.StatusBadRequest, "")
 				return
 			}
