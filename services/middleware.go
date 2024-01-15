@@ -10,7 +10,7 @@ func CheckSource(c *gin.Context) {
 	req := VerifyWechatRequest{}
 	err := c.ShouldBindQuery(&req)
 	if err != nil {
-		c.AbortWithStatusJSON(http.StatusBadRequest, map[string]any{
+		c.AbortWithStatusJSON(http.StatusBadRequest, map[string]interface{}{
 			"error": err,
 		})
 		return
@@ -20,7 +20,7 @@ func CheckSource(c *gin.Context) {
 	if utils.VerifyInfoFromWechat("123123", req.Timestamp, req.Nonce, req.Signature) {
 		c.Next()
 	} else {
-		c.AbortWithStatusJSON(http.StatusBadRequest, map[string]any{
+		c.AbortWithStatusJSON(http.StatusBadRequest, map[string]interface{}{
 			"error": "request illegal: not from wechat",
 		})
 		return
