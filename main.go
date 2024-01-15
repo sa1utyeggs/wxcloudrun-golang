@@ -55,10 +55,17 @@ func main() {
 	applet := server.Group("/wechat-server")
 	{
 		applet.POST("/revoke", func(c *gin.Context) {
-			request := services.EventRequest{}
-			err := c.ShouldBindJSON(&request)
+			params := services.VerifyWechatRequest{}
+			err := c.ShouldBindQuery(&params)
 			if err != nil {
-				fmt.Println(err)
+				fmt.Println(err.Error())
+				c.String(http.StatusBadRequest, "")
+				return
+			}
+			request := services.EventRequest{}
+			err = c.ShouldBindXML(&request)
+			if err != nil {
+				fmt.Println(err.Error())
 				c.String(http.StatusBadRequest, "")
 				return
 			}
