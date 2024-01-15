@@ -16,6 +16,7 @@ type EventRequest struct {
 	OpenID       string `json:"OpenID"`
 	AppID        string `json:"AppID"`
 	RevokeInfo   string `json:"RevokeInfo"`
-	PluginID     string `json:"PluginID"`
-	OpenPID      string `json:"OpenPID"`
+	// 插件相关
+	PluginID string `json:"PluginID"`
+	OpenPID  string `json:"OpenPID"`
 }
