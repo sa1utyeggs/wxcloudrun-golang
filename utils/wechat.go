@@ -16,6 +16,7 @@ func VerifyInfoFromWechat(token, timestamp, nonce, signature string) bool {
 	hasher.Write([]byte(strings.Join(data, "")))
 	// 计算哈希值
 	hashBytes := hasher.Sum(nil)
+	res := hex.EncodeToString(hashBytes)
 	// 将哈希值转换为16进制字符串
-	return hex.EncodeToString(hashBytes) == signature
+	return res == signature
 }

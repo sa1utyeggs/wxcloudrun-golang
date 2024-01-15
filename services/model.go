@@ -7,16 +7,20 @@ type VerifyWechatRequest struct {
 	EchoStr   string `form:"echostr"`   // 随机字符串
 }
 
-type EventRequest struct {
+type RevokeEventRequest struct {
 	ToUserName   string `json:"ToUserName"`
 	FromUserName string `json:"FromUserName"`
 	CreateTime   int64  `json:"CreateTime"`
 	MsgType      string `json:"MsgType"`
 	Event        string `json:"Event"`
 	OpenID       string `json:"OpenID"`
-	AppID        string `json:"AppID"`
 	RevokeInfo   string `json:"RevokeInfo"`
-	// 插件相关
-	PluginID string `json:"PluginID"`
-	OpenPID  string `json:"OpenPID"`
+	PluginID     string `json:"PluginID"`
+	OpenPID      string `json:"OpenPID"`
+	// 三方 app id
+	AppID string `json:"AppID"`
+	// 用户 session key
+	SessionKey string `json:"SessionKey"`
+	// 加密
+	Encrypt string `json:"Encrypt"`
 }
