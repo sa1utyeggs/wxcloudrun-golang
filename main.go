@@ -10,6 +10,10 @@ import (
 func main() {
 	server := gin.Default()
 
+	server.POST("/", func(c *gin.Context) {
+		c.String(http.StatusOK, "success")
+	})
+
 	server.GET("/verify-wechat", func(c *gin.Context) {
 		req := services.VerifyWechatRequest{}
 		err := c.ShouldBindQuery(&req)
